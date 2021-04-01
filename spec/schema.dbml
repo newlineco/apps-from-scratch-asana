@@ -1,0 +1,64 @@
+// https://dbdiagram.io/d/605ca7c6ecb54e10c33d415a
+
+Table Workspace {
+  id int [pk, increment]
+  name varchar
+}
+
+Table Team {
+  id int [pk, increment]
+  workspaceId int [ref: > Workspace.id]
+  name varchar
+}
+
+Table Project {
+  id int [pk, increment]
+  teamId int [ref: > Team.id]
+  name varchar
+}
+
+Table Task {
+  id int [pk, increment]
+  projectId int [ref: > Project.id]
+  userId int [ref: > User.id]
+  parentTaskId int [ref: > Task.id]
+  name varchar
+  
+}
+
+Table ProjectTask {
+  id int [pk, increment]
+  projectId int [ref: > Project.id]
+  taskId int [ref: > Task.id]
+  name varchar
+}
+
+Table UserWorkspace {
+  id int [pk, increment]
+  workspaceId int [ref: > Workspace.id]
+  userId int [ref: > User.id]
+  name varchar
+}
+
+Table UserTeam {
+  id int [pk, increment]
+  teamId int [ref: > Team.id]  
+  userId int [ref: > User.id]
+  name varchar
+}
+
+Table UserProject {
+  id int [pk, increment]
+  projectId int [ref: > Project.id]
+  userId int [ref: > User.id]
+  name varchar
+}
+
+Table User {
+  id int [pk, increment]
+  name varchar
+  email varchar
+  passwordHash varchar
+  about varchar
+}
+
