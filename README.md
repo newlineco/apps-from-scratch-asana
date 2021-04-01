@@ -1,4 +1,4 @@
-# apps-from-scratch-asana
+# Apps From Scratch - Asana
 
 ## Schema
 
