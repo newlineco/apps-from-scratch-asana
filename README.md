@@ -8,6 +8,6 @@
 
 ## REST API
 
-[![API](spec/apiary.png)](https://afsasana.docs.apiary.io)
+[![API](spec/apiary.png)](https://afsasana.docs.apiary.io/#reference/0/authentication/signup)
 
-[View on Apiary](https://afsasana.docs.apiary.io) | [Code](spec/rest.apib)
+[View on Apiary](https://afsasana.docs.apiary.io/#reference/0/authentication/signup) | [Code](spec/rest.apib)
