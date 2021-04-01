@@ -30,7 +30,6 @@ Table ProjectTask {
   id int [pk, increment]
   projectId int [ref: > Project.id]
   taskId int [ref: > Task.id]
-  name varchar
 }
 
 Table UserWorkspace {
@@ -61,4 +60,3 @@ Table User {
   passwordHash varchar
   about varchar
 }
-
