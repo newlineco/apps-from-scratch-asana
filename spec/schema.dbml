@@ -1,5 +1,3 @@
-// https://dbdiagram.io/d/605ca7c6ecb54e10c33d415a
-
 Table Workspace {
   id int [pk, increment]
   name varchar
