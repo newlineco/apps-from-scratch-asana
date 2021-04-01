@@ -1,0 +1,374 @@
+FORMAT: 1A
+
+# AFS Asana
+
+## Authentication [/]
+
+### Signup [POST /auth/signup]
++ Request (application/json)
+    + Attributes (UserAuthPayload)
+
++ Response 200 (application/json)
+    + Attributes (AuthenticatedUserResponse)
+
+### Login [POST /auth/login]
++ Request (application/json)
+    + Attributes (UserAuthPayload)
+
++ Response 200 (application/json)
+    + Attributes (AuthenticatedUserResponse)
+
++ Response 401
+
++ Response 404
+
+## Workspaces [/workspaces]
+
+### Create Workspace [POST /workspaces]
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Bearer jsonWebToken
+            
+    + Attributes (CreateWorkspacePayload)
+
++ Response 200 (application/json)
+    + Attributes (CreatedWorkspaceResponse)
+
++ Response 401
+
+### Get Workspace [GET /workspaces/{workspaceId}]
+
++ Parameters
+
+    + workspaceId: uuid (string)
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Bearer jsonWebToken
+
++ Response 200 (application/json)
+    + Attributes (CreatedWorkspaceResponse)
+
++ Response 401
+
++ Response 404
+
+### Add User to Workspace [POST /workspaces/{workspaceId}/addUser]
+
++ Parameters
+
+    + workspaceId: uuid (string)
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Bearer jsonWebToken
+            
+    + Attributes (UserWorkspacePayload)
+
++ Response 200
+
++ Response 401
+
++ Response 404
+
+### Remove User from Workspace [POST /workspaces/{workspaceId}/removeUser]
+
++ Parameters
+
+    + workspaceId: uuid (string)
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Bearer jsonWebToken
+            
+    + Attributes (UserWorkspacePayload)
+
++ Response 200
+
++ Response 401
+
++ Response 404
+
+## Teams [/teams]
+
+### Create Team [POST /teams]
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Bearer jsonWebToken
+            
+    + Attributes (CreateTeamPayload)
+
++ Response 200 (application/json)
+    + Attributes (CreatedTeamResponse)
+
++ Response 401
+
+### Get Team [GET /teams/{teamId}]
+
++ Parameters
+
+    + teamId: uuid (string)
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Bearer jsonWebToken
+
++ Response 200 (application/json)
+    + Attributes (CreatedTeamResponse)
+
++ Response 401
+
++ Response 404
+
+### Add User to Team [POST /teams/{teamId}/addUser]
+
++ Parameters
+
+    + teamId: uuid (string)
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Bearer jsonWebToken
+            
+    + Attributes (UserTeamPayload)
+
++ Response 200
+
++ Response 401
+
++ Response 404
+
+### Remove User from Team [POST /teams/{teamId}/removeUser]
+
++ Parameters
+
+    + teamId: uuid (string)
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Bearer jsonWebToken
+            
+    + Attributes (UserTeamPayload)
+
++ Response 200
+
++ Response 401
+
++ Response 404
+
+## Projects [/projects]
+
+### Create Project [POST /projects]
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Bearer jsonWebToken
+            
+    + Attributes (CreateProjectPayload)
+
++ Response 200 (application/json)
+    + Attributes (CreatedProjectResponse)
+
++ Response 401
+
+### Get Project [GET /projects/{projectId}]
+
++ Parameters
+
+    + projectId: uuid (string)
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Bearer jsonWebToken
+
++ Response 200 (application/json)
+    + Attributes (CreatedProjectResponse)
+
++ Response 401
+
++ Response 404
+
+### Add User to Project [POST /projects/{projectId}/addUser]
+
++ Parameters
+
+    + projectId: uuid (string)
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Bearer jsonWebToken
+            
+    + Attributes (UserProjectPayload)
+
++ Response 200
+
++ Response 401
+
++ Response 404
+
+### Remove User from Project [POST /projects/{projectId}/removeUser]
+
++ Parameters
+
+    + projectId: uuid (string)
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Bearer jsonWebToken
+            
+    + Attributes (UserProjectPayload)
+
++ Response 200
+
++ Response 401
+
++ Response 404
+
+## Tasks [/tasks]
+
+### Create Task [POST /tasks]
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Bearer jsonWebToken
+            
+    + Attributes (CreateTaskPayload)
+
++ Response 200 (application/json)
+    + Attributes (CreatedTaskResponse)
+
++ Response 401
+
+### List Tasks [GET /tasks]
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Bearer jsonWebToken
+            
++ Response 200 (application/json)
+    + Attributes (ListOfTasksReponse)
+
++ Response 401
+
+### Get Task [GET /tasks/{taskId}]
+
++ Parameters
+
+    + taskId: uuid (string)
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Bearer jsonWebToken
+
++ Response 200 (application/json)
+    + Attributes (CreatedTaskResponse)
+
++ Response 401
+
++ Response 404
+
+### Modify Task [PUT /tasks/{taskId}]
+
++ Parameters
+
+    + taskId: uuid (string)
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Bearer jsonWebToken
+
+    + Attributes (CreateTaskPayload)
+
++ Response 200 (application/json)
+    + Attributes (CreatedTaskResponse)
+
++ Response 401
+
++ Response 404
+
+
+## Data Structures
+
+### UserAuthPayload (object)
++ data
+    + email: me@example.com
+    + password: password
+
+### AuthenticatedUserResponse (object)
++ data
+    + id: uuid (string)
+    + token: token (string)
+
+### CreateWorkspacePayload (object)
++ data
+    + name: workspaceName
+
+### CreatedWorkspaceResponse (object)
++ data
+    + id: uuid (string)
+    + name: workspaceName (string)
+
+### UserWorkspacePayload (object)
++ data
+    + id: uuid (string) - Id of user to add/remove
+
+### CreateTeamPayload (object)
++ data
+    + name: teamName
+
+### CreatedTeamResponse (object)
++ data
+    + id: uuid (string)
+    + name: teamName (string)
+
+### UserTeamPayload (object)
++ data
+    + id: uuid (string) - Id of user to add/remove
+
+### CreateProjectPayload (object)
++ data
+    + name: projectName
+    + teamId: uuid
+
+### CreatedProjectResponse (object)
++ data
+    + id: uuid (string)
+    + name: projectName (string)
+
+### UserProjectPayload (object)
++ data
+    + id: uuid (string) - Id of user to add/remove
+
+### CreateTaskPayload (object)
++ data
+    + name: taskName
+    + projectId: uuid
+
+### CreatedTaskResponse (object)
++ data
+    + id: uuid (string)
+    + name: taskName (string)
+
+### ListOfTasksReponse (object)
++ data (array)
+    + (object)
+        + id: uuid (string)
+        + name: taskName (string)
