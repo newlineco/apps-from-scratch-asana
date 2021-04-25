@@ -1,58 +1,73 @@
-Table Workspace {
+Table Workspaces {
   id int [pk, increment]
+  uuid varchar
   name varchar
 }
 
-Table Team {
+Table Teams {
   id int [pk, increment]
-  workspaceId int [ref: > Workspace.id]
+  workspaceId int [ref: > Workspaces.id]
+  uuid varchar
   name varchar
 }
 
-Table Project {
+Table Projects {
   id int [pk, increment]
-  teamId int [ref: > Team.id]
+  teamId int [ref: > Teams.id]
+  uuid varchar
   name varchar
 }
 
-Table Task {
+Table Tasks {
   id int [pk, increment]
-  projectId int [ref: > Project.id]
-  userId int [ref: > User.id]
-  parentTaskId int [ref: > Task.id]
+  projectId int [ref: > Projects.id]
+  parentTaskId int [ref: > Tasks.id]
+  creator_id int [ref: > Users.id]
+  assignee_id int [ref: > Users.id]
+  uuid varchar
   name varchar
-  
+  description text
+  due_date datetime
+  completed bool
+  completed_date datetime
+  last_modified datetime
+  priority string
 }
 
-Table ProjectTask {
+Table ProjectTasks {
   id int [pk, increment]
-  projectId int [ref: > Project.id]
-  taskId int [ref: > Task.id]
+  projectId int [ref: > Projects.id]
+  taskId int [ref: > Tasks.id]
+  uuid varchar
 }
 
-Table UserWorkspace {
+Table UserWorkspaces {
   id int [pk, increment]
-  workspaceId int [ref: > Workspace.id]
-  userId int [ref: > User.id]
-  name varchar
-}
-
-Table UserTeam {
-  id int [pk, increment]
-  teamId int [ref: > Team.id]  
-  userId int [ref: > User.id]
-  name varchar
-}
-
-Table UserProject {
-  id int [pk, increment]
-  projectId int [ref: > Project.id]
-  userId int [ref: > User.id]
+  workspaceId int [ref: > Workspaces.id]
+  userId int [ref: > Users.id]
+  uuid varchar
   name varchar
 }
 
-Table User {
+Table UserTeams {
   id int [pk, increment]
+  teamId int [ref: > Teams.id]
+  userId int [ref: > Users.id]
+  uuid varchar
+  name varchar
+}
+
+Table UserProjects {
+  id int [pk, increment]
+  projectId int [ref: > Projects.id]
+  userId int [ref: > Users.id]
+  uuid varchar
+  name varchar
+}
+
+Table Users {
+  id int [pk, increment]
+  uuid varchar
   name varchar
   email varchar
   passwordHash varchar

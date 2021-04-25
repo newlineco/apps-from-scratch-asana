@@ -2,9 +2,9 @@
 
 ## Schema
 
-[![Schema](spec/schema.png)](https://dbdiagram.io/d/605ca7c6ecb54e10c33d415a)
+[![Schema](spec/schema.png)](https://dbdiagram.io/d/6085b1f0b29a09603d120c15)
 
-[View on dbdiagram.io](https://dbdiagram.io/d/605ca7c6ecb54e10c33d415a) | [Code](spec/schema.dbml)
+[View on dbdiagram.io](https://dbdiagram.io/d/6085b1f0b29a09603d120c15) | [Code](spec/schema.dbml)
 
 ## REST API
 
